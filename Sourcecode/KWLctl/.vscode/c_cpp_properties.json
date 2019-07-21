@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "C:\\work\\__ap300\\arduino-1.8.9\\hardware\\arduino\\avr\\**",
+                "C:\\work\\__ap300\\arduino-1.8.9\\tools\\**",
+                "C:\\work\\__ap300\\arduino-1.8.9\\libraries\\**",
+                "C:\\Users\\zitzltho\\Documents\\Arduino\\libraries\\**"
+            ],
+            "forcedInclude": [
+                "C:\\work\\__ap300\\arduino-1.8.9\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h"
+            ],
+            "defines": [
+                "__AVR_ATmega2560__",
+                "ARDUINO_ARCH_AVR"
+            ],
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "C:\\work\\__ap300\\arduino-1.8.9\\hardware\\tools\\avr\\bin\\avr-gcc.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}

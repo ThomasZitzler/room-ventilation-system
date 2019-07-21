@@ -200,9 +200,11 @@ public:
   // Stufe 0 = 0%, Stufe 1 = 60%, Stufe 2 = 80%, Stufe 3 = 100%, Stufe 4 = 120%, Stufe 5 = 140%
 
   /// # der konfigurierten Standardlüftungsstufen.
-  static constexpr unsigned StandardModeCnt = 4;
+//  static constexpr unsigned StandardModeCnt = 4;
+  static constexpr unsigned StandardModeCnt = 6;
   /// Solldrehzahlen in Relation zur Standardlüftungsstufe.
-  static constexpr double StandardKwlModeFactor[MAX_FAN_MODE_CNT] = {0, 0.7, 1, 1.3};
+//  static constexpr double StandardKwlModeFactor[MAX_FAN_MODE_CNT] = {0, 0.7, 1, 1.3};
+  static constexpr double StandardKwlModeFactor[MAX_FAN_MODE_CNT] = {0, 0.5, 0.6, 0.7, 1, 1.3};
   /// Standardlüftungsstufe beim Anschalten.
   static constexpr int StandardKwlMode = 2;
   /// Drehzahl für Standardlüftungsstufe Zuluft.
@@ -257,7 +259,7 @@ public:
    * mosquitto_pub -t d15/set/kwl/resetAll_IKNOWWHATIMDOING -m YES
    * @endcode
    */
-  static constexpr bool FACTORY_RESET_EEPROM = false;
+  static constexpr bool FACTORY_RESET_EEPROM = true;
 
   /// EEPROM configuration version to expect/write.
   static constexpr unsigned KWL_EEPROM_VERSION = 49;
@@ -390,9 +392,9 @@ public:
 
   // ***************************************************  D E B U G E I N S T E L L U N G E N ********************************************************
   // Allgemeine Debugausgaben auf der seriellen Schnittstelle aktiviert.
-  static constexpr bool serialDebug = false;
+  static constexpr bool serialDebug = true;
   // Debugausgaben für die Lüfter auf der seriellen Schnittstelle aktiviert.
-  static constexpr bool serialDebugFan = false;
+  static constexpr bool serialDebugFan = true;
   // Debugausgaben für die Antifreezeschaltung auf der seriellen Schnittstelle aktiviert.
   static constexpr bool serialDebugAntifreeze = false;
   // Debugausgaben für die Summerbypassschaltung auf der seriellen Schnittstelle aktiviert.

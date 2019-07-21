@@ -1,2 +1,3 @@
 *.orig
 *qbs*
+src/build/**
