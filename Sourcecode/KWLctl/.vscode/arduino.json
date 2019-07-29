@@ -2,7 +2,7 @@
     "board": "arduino:avr:mega",
     "configuration": "cpu=atmega2560",
     "sketch": "KWLctl.ino",
-    "output": "build",
+    "output": ".build",
     "programmer": "AVR ISP",
-    "port": "COM7"
+    "port": "COM8"
 }

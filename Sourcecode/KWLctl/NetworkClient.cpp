@@ -25,6 +25,10 @@
 
 #include <MicroNTP.h>
 
+#define WIFI_SUPPORT
+
+#include "WifiData.h"
+
 // To prevent crashes while debugging in lab settings without Ethernet module
 //#define NO_ETHERNET
 
@@ -46,7 +50,13 @@ namespace {
 
 NetworkClient::NetworkClient(KWLPersistentConfig& config, MicroNTP& ntp) :
   MessageHandler(F("NetworkClient")),
+
+#ifdef WIFI_SUPPORT
+  mqtt_client_(wifi_client_),
+#else
   mqtt_client_(eth_client_),
+#endif
+
   config_(config),
   ntp_(ntp),
   stats_(F("NetworkClient")),
@@ -58,6 +68,14 @@ NetworkClient::NetworkClient(KWLPersistentConfig& config, MicroNTP& ntp) :
 
 void NetworkClient::begin(Print& initTracer)
 {
+
+#ifdef WIFI_SUPPORT
+  // this is written for a WEMOS MEGA + WIFI, the ESP is connected to Serial3 in "special mode" DIP 1-4 on, others off
+  Serial.println("Initialize serial for ESP module");
+  Serial3.begin(115200);
+  WiFi.init(&Serial3);
+#endif
+
   initEthernet(initTracer);
   delay(1500);  // to give Ethernet link time to start
   last_lan_reconnect_attempt_time_ = micros();
@@ -124,7 +142,11 @@ void NetworkClient::begin(Print& initTracer)
 
 void NetworkClient::initEthernet(Print& initTracer)
 {
-  initTracer.print(F("Initialisierung Ethernet, IP "));
+ 
+#ifdef WIFI_SUPPORT
+  initTracer.print(F("Initialisierung WIFI on serial3, access point "));
+  initTracer.println(WIFI_AP);
+
   IPAddress ip = config_.getNetworkIPAddress();
   IPAddress gw = config_.getNetworkGateway();
   IPAddress subnet = config_.getNetworkSubnetMask();
@@ -140,9 +162,54 @@ void NetworkClient::initEthernet(Print& initTracer)
   Serial.print(F(" ntp "));
   Serial.print(ntp);
   initTracer.println();
+
+  // check for the presence of the shield
+  if (WiFi.status() == WL_NO_SHIELD) {
+    initTracer.println("WiFi shield not present");
+  }
+  else {
+    wifi_status_ = WiFi.begin(WIFI_AP, WIFI_PASSWORD);
+    if (wifi_status_ == WL_CONNECTED) {
+      initTracer.print("Connected to WIFI with IP ");
+      initTracer.println(WiFi.localIP());
+    }
+
+    // attempt to connect to WiFi network
+
+    /* 
+    while (wifi_status_ != WL_CONNECTED) {
+      Serial.print("Attempting to connect to WPA SSID: ");
+      Serial.println(WIFI_AP);
+      // Connect to WPA/WPA2 network
+      wifi_status_ = WiFi.begin(WIFI_AP, WIFI_PASSWORD);
+      delay(500);
+    }
+    Serial.println("Connected to AP");
+    */
+  }
+#else
+  initTracer.print(F("Initialisierung Ethernet, IP "));
+
+  IPAddress ip = config_.getNetworkIPAddress();
+  IPAddress gw = config_.getNetworkGateway();
+  IPAddress subnet = config_.getNetworkSubnetMask();
+  IPAddress dns = config_.getNetworkDNSServer();
+  IPAddress ntp = config_.getNetworkNTPServer();
+  initTracer.print(ip);
+  Serial.print('/');
+  Serial.print(subnet);
+  Serial.print(F(" gw "));
+  Serial.print(gw);
+  Serial.print(F(" dns "));
+  Serial.print(dns);
+  Serial.print(F(" ntp "));
+  Serial.print(ntp);
+  initTracer.println();
+
   uint8_t mac[6];
   config_.getNetworkMACAddress().copy_to(mac);
   Ethernet.begin(mac, ip, dns, gw, subnet);
+#endif
 }
 
 bool NetworkClient::mqttConnect()
@@ -217,6 +284,38 @@ void NetworkClient::loop()
   }
 
 #ifndef NO_ETHERNET
+
+#ifdef WIFI_SUPPORT
+  //auto new_wifi_status = WiFi.status();
+  auto current_time = micros();
+  if (lan_ok_) {
+    if (WiFi.localIP()[0] == 0) {
+      Serial.println(F("WLAN disconnected, attempting to connect"));
+      lan_ok_ = false;
+      wifi_status_ = WiFi.status();
+      timer_task_.cancel();
+      initEthernet(Serial); // nothing more to do now
+      last_lan_reconnect_attempt_time_ = current_time;
+      return;
+    }
+    // have Ethernet, do other checks
+  } else {
+    // no Ethernet previously, check if now connected
+    if (WiFi.localIP()[0] == 0) {
+      Serial.print(F("WLAN connected, IP: "));
+      Serial.println(WiFi.localIP());
+      lan_ok_ = true;
+      mqtt_ok_ = true; // to force check and immediate reconnect
+    } else {
+      // still no Ethernet
+      if (current_time - last_lan_reconnect_attempt_time_ >= LAN_CHECK_INTERVAL) {
+        // try reconnecting
+        initEthernet(Serial);
+        last_lan_reconnect_attempt_time_ = current_time;
+      }
+      return;
+    }
+#else  
   Ethernet.maintain();
   auto current_time = micros();
   if (lan_ok_) {
@@ -245,6 +344,7 @@ void NetworkClient::loop()
       }
       return;
     }
+#endif  
   }
 
   ntp_.loop();

@@ -1,3 +1,4 @@
 *.orig
 *qbs*
 src/build/**
+Sourcecode/KWLctl/WifiData.h

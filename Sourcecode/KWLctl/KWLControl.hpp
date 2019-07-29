@@ -24,6 +24,10 @@
  */
 #pragma once
 
+#include <Arduino.h>
+
+#define WIFI_SUPPORT
+
 #include <MicroNTP.h>
 
 #include "NetworkClient.h"
@@ -148,8 +152,12 @@ private:
   Scheduler::PollingScheduler scheduler_;
   /// Persistent configuration.
   KWLPersistentConfig persistent_config_;
+#ifdef WIFI_SUPPORT
+  WiFiEspUDP udp_;
+#else  
   /// UDP handler for NTP.
   EthernetUDP udp_;
+#endif
   /// NTP protocol.
   MicroNTP ntp_;
   /// Global MQTT client.

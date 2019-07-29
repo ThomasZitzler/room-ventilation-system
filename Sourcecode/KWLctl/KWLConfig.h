@@ -259,7 +259,7 @@ public:
    * mosquitto_pub -t d15/set/kwl/resetAll_IKNOWWHATIMDOING -m YES
    * @endcode
    */
-  static constexpr bool FACTORY_RESET_EEPROM = true;
+  static constexpr bool FACTORY_RESET_EEPROM = false;
 
   /// EEPROM configuration version to expect/write.
   static constexpr unsigned KWL_EEPROM_VERSION = 49;
@@ -394,7 +394,7 @@ public:
   // Allgemeine Debugausgaben auf der seriellen Schnittstelle aktiviert.
   static constexpr bool serialDebug = true;
   // Debugausgaben für die Lüfter auf der seriellen Schnittstelle aktiviert.
-  static constexpr bool serialDebugFan = true;
+  static constexpr bool serialDebugFan = false;
   // Debugausgaben für die Antifreezeschaltung auf der seriellen Schnittstelle aktiviert.
   static constexpr bool serialDebugAntifreeze = false;
   // Debugausgaben für die Summerbypassschaltung auf der seriellen Schnittstelle aktiviert.

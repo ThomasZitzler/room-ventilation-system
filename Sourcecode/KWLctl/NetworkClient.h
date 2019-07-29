@@ -28,7 +28,16 @@
 #include "TimeScheduler.h"
 #include "MessageHandler.h"
 
-#include <Ethernet.h>
+#define WIFI_SUPPORT
+
+#ifdef WIFI_SUPPORT
+  #include <WiFiEspClient.h>
+  #include <WiFiEsp.h>
+  #include <WiFiEspUdp.h>
+#else
+  #include <Ethernet.h>
+#endif
+
 #include <PubSubClient.h>
 
 class MicroNTP;
@@ -80,7 +89,13 @@ private:
   static constexpr uint8_t SERIAL_BUFFER_SIZE = 128;
 
   /// Ethernet client for MQTT client.
+#ifdef WIFI_SUPPORT
+  int wifi_status_ = WL_IDLE_STATUS;
+  WiFiEspClient wifi_client_;
+#else
   EthernetClient eth_client_;
+#endif
+
   /// MQTT client.
   PubSubClient mqtt_client_;
   /// Persistent configuration.

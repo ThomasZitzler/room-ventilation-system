@@ -23,7 +23,12 @@
 #include "MQTTTopic.hpp"
 #include "ScreenshotService.h"
 
-#include <EthernetUdp.h>
+#ifdef WIFI_SUPPORT
+  #include <WiFiEspUdp.h>
+#else
+  #include <EthernetUdp.h>
+#endif
+
 #include <Wire.h>
 #include <DeadlockWatchdog.h>
 #include <avr/wdt.h>
@@ -303,7 +308,13 @@ bool KWLControl::mqttReceiveMsg(const StringView& topic, const StringView& s)
       Serial.println(millis());
     }
     tft_.prepareForScreenshot();
+
+#ifdef WIFI_SUPPORT
+    WiFiEspClient client;
+#else    
     EthernetClient client;
+#endif
+
     if (!client.connect(ip, port)) {
       if (KWLConfig::serialDebug) {
         Serial.println(F("Screenshot: cannot connect"));

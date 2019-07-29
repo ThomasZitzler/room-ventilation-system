@@ -47,6 +47,8 @@
   Die Steuerung ist per LAN (W5100) erreichbar. Als Protokoll wird mqtt verwendet. Über mqtt liefert die Steuerung Temperaturen, Drehzahlen der Lüfter, Stellung der Bypassklappe und den Status der AntiFreeze Funktion zurück.
 */
 
+#define WIFI_SUPPORT
+
 #include "KWLControl.hpp"
 
 #include <MultiPrint.h>
