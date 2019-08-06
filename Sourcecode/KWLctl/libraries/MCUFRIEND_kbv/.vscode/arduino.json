@@ -1,0 +1,6 @@
+{
+    "board": "arduino:avr:mega",
+    "configuration": "cpu=atmega2560",
+    "sketch": "examples\\LCD_ID_readreg\\LCD_ID_readreg.ino",
+    "port": "COM7"
+}

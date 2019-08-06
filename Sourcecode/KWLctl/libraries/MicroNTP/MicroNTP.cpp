@@ -187,9 +187,11 @@ bool MicroNTP::parseReply(uint32_t ms)
     if (udp_.remotePort() != NTP_PORT) {
       if (DEBUG) {
         Serial.print(F("NTP: received packet from non-NTP port "));
-        Serial.println(udp_.remotePort());
+        Serial.print(udp_.remotePort());
+        Serial.print(F(" from IP "));
+        Serial.println(udp_.remoteIP());
       }
-      return false;
+      //return false;
     }
     if (packetSize < int(sizeof(ntp_packet))) {
       if (DEBUG) {
