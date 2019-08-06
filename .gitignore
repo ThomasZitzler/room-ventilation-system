@@ -2,3 +2,5 @@
 *qbs*
 src/build/**
 Sourcecode/KWLctl/WifiData.h
+Sourcecode/KWLctl/.vscode/.BROWSE*
+Sourcecode/KWLctl/src/UserConfig.WifiData.h

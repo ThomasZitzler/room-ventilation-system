@@ -1,24 +1,97 @@
 {
     "configurations": [
         {
+            "name": "!!! WARNING !!! AUTO-GENERATED FILE, PLEASE DO NOT MODIFY IT AND USE https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags"
+        },
+        {
             "name": "Win32",
             "includePath": [
-                "C:\\work\\__ap300\\arduino-1.8.9\\hardware\\arduino\\avr\\**",
-                "C:\\work\\__ap300\\arduino-1.8.9\\tools\\**",
-                "C:\\work\\__ap300\\arduino-1.8.9\\libraries\\**",
-                "C:\\Users\\zitzltho\\Documents\\Arduino\\libraries\\**"
+                "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/include",
+                "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/src",
+                "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/lib/MultiPrint",
+                "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/.pio/libdeps/megaatmega2560/DallasTemperature_ID54",
+                "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/.pio/libdeps/megaatmega2560/OneWire_ID1",
+                "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/.pio/libdeps/megaatmega2560/Adafruit TouchScreen_ID5430",
+                "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/.pio/libdeps/megaatmega2560/PubSubClient_ID89/src",
+                "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/lib/MicroNTP",
+                "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/.pio/libdeps/megaatmega2560/WiFiEsp_ID509/src",
+                "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/lib/DeadlockWatchdog",
+                "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/lib/ScreenshotService",
+                "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/.pio/libdeps/megaatmega2560/MCUFRIEND_kbv_ID1426",
+                "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/.pio/libdeps/megaatmega2560/MCUFRIEND_kbv_ID1426/utility",
+                "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/.pio/libdeps/megaatmega2560/Adafruit GFX Library_ID13",
+                "C:/Users/zitzltho/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/SPI/src",
+                "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/lib/PersistentConfiguration",
+                "C:/Users/zitzltho/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/EEPROM/src",
+                "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/lib/FlashStringLiteral",
+                "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/lib/FanRPM",
+                "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/.pio/libdeps/megaatmega2560/PID_ID2",
+                "C:/Users/zitzltho/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/Wire/src",
+                "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/lib/TimeScheduler",
+                "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/.pio/libdeps/megaatmega2560/DHT sensor library_ID19",
+                "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/.pio/libdeps/megaatmega2560/Adafruit Unified Sensor_ID31",
+                "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/lib/MessageHandler",
+                "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/lib/StringView",
+                "C:/Users/zitzltho/.platformio/packages/framework-arduinoavr/cores/arduino",
+                "C:/Users/zitzltho/.platformio/packages/framework-arduinoavr/variants/mega",
+                "C:/Users/zitzltho/.platformio/lib/WifiManager_ID567",
+                "C:/Users/zitzltho/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/HID/src",
+                "C:/Users/zitzltho/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/SoftwareSerial/src",
+                "C:/Users/zitzltho/.platformio/packages/tool-unity",
+                ""
             ],
-            "forcedInclude": [
-                "C:\\work\\__ap300\\arduino-1.8.9\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h"
-            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": "${workspaceRoot}/.vscode/.browse.c_cpp.db",
+                "path": [
+                    "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/include",
+                    "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/src",
+                    "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/lib/MultiPrint",
+                    "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/.pio/libdeps/megaatmega2560/DallasTemperature_ID54",
+                    "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/.pio/libdeps/megaatmega2560/OneWire_ID1",
+                    "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/.pio/libdeps/megaatmega2560/Adafruit TouchScreen_ID5430",
+                    "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/.pio/libdeps/megaatmega2560/PubSubClient_ID89/src",
+                    "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/lib/MicroNTP",
+                    "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/.pio/libdeps/megaatmega2560/WiFiEsp_ID509/src",
+                    "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/lib/DeadlockWatchdog",
+                    "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/lib/ScreenshotService",
+                    "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/.pio/libdeps/megaatmega2560/MCUFRIEND_kbv_ID1426",
+                    "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/.pio/libdeps/megaatmega2560/MCUFRIEND_kbv_ID1426/utility",
+                    "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/.pio/libdeps/megaatmega2560/Adafruit GFX Library_ID13",
+                    "C:/Users/zitzltho/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/SPI/src",
+                    "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/lib/PersistentConfiguration",
+                    "C:/Users/zitzltho/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/EEPROM/src",
+                    "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/lib/FlashStringLiteral",
+                    "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/lib/FanRPM",
+                    "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/.pio/libdeps/megaatmega2560/PID_ID2",
+                    "C:/Users/zitzltho/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/Wire/src",
+                    "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/lib/TimeScheduler",
+                    "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/.pio/libdeps/megaatmega2560/DHT sensor library_ID19",
+                    "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/.pio/libdeps/megaatmega2560/Adafruit Unified Sensor_ID31",
+                    "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/lib/MessageHandler",
+                    "c:/work/__ap300/room-ventilation-system__tzi/Sourcecode/KWLctl/lib/StringView",
+                    "C:/Users/zitzltho/.platformio/packages/framework-arduinoavr/cores/arduino",
+                    "C:/Users/zitzltho/.platformio/packages/framework-arduinoavr/variants/mega",
+                    "C:/Users/zitzltho/.platformio/lib/WifiManager_ID567",
+                    "C:/Users/zitzltho/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/HID/src",
+                    "C:/Users/zitzltho/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/SoftwareSerial/src",
+                    "C:/Users/zitzltho/.platformio/packages/tool-unity",
+                    ""
+                ]
+            },
             "defines": [
+                "PLATFORMIO=40000",
+                "ARDUINO_AVR_MEGA2560",
+                "F_CPU=16000000L",
+                "ARDUINO_ARCH_AVR",
+                "ARDUINO=10805",
                 "__AVR_ATmega2560__",
-                "ARDUINO_ARCH_AVR"
+                ""
             ],
-            "intelliSenseMode": "gcc-x64",
-            "compilerPath": "C:\\work\\__ap300\\arduino-1.8.9\\hardware\\tools\\avr\\bin\\avr-gcc.exe",
+            "intelliSenseMode": "clang-x64",
             "cStandard": "c11",
-            "cppStandard": "c++17"
+            "cppStandard": "c++11",
+            "compilerPath": "\"C:/Users/zitzltho/.platformio/packages/toolchain-atmelavr/bin/avr-gcc.exe\" -mmcu=atmega2560"
         }
     ],
     "version": 4
