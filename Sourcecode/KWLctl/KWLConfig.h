@@ -200,11 +200,11 @@ public:
   // Stufe 0 = 0%, Stufe 1 = 60%, Stufe 2 = 80%, Stufe 3 = 100%, Stufe 4 = 120%, Stufe 5 = 140%
 
   /// # der konfigurierten Standardlüftungsstufen.
-//  static constexpr unsigned StandardModeCnt = 4;
-  static constexpr unsigned StandardModeCnt = 6;
+  static constexpr unsigned StandardModeCnt = 4;
+//  static constexpr unsigned StandardModeCnt = 6;
   /// Solldrehzahlen in Relation zur Standardlüftungsstufe.
-//  static constexpr double StandardKwlModeFactor[MAX_FAN_MODE_CNT] = {0, 0.7, 1, 1.3};
-  static constexpr double StandardKwlModeFactor[MAX_FAN_MODE_CNT] = {0, 0.5, 0.6, 0.7, 1, 1.3};
+  static constexpr double StandardKwlModeFactor[MAX_FAN_MODE_CNT] = {0, 0.7, 1, 1.3};
+// static constexpr double StandardKwlModeFactor[MAX_FAN_MODE_CNT] = {0, 0.5, 0.6, 0.7, 1, 1.3};
   /// Standardlüftungsstufe beim Anschalten.
   static constexpr int StandardKwlMode = 2;
   /// Drehzahl für Standardlüftungsstufe Zuluft.

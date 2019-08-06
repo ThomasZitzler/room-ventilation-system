@@ -95,7 +95,10 @@ void KWLControl::begin(Print& initTracer)
 
   tft_.begin(initTracer, *this);
 
+#ifndef WIFI_SUPPORT
+  // wifi causes watchdog issues
   DeadlockWatchdog::begin(&deadlockDetected, this);
+#endif  
 }
 
 void KWLControl::errorsToString(char* buffer, size_t size)

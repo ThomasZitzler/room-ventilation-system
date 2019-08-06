@@ -14,5 +14,5 @@ CONFIGURE(StandardFan2ImpulsesPerRotation, 1.0)
 CONFIGURE(StandardNenndrehzahlFan, 2850)
 
 CONFIGURE(StandardKwlMode, 1)
-CONFIGURE(StandardSpeedSetpointFan1, 1300)
-CONFIGURE(StandardSpeedSetpointFan2, 1300)
+CONFIGURE(StandardSpeedSetpointFan1, 1100)
+CONFIGURE(StandardSpeedSetpointFan2, 1100)

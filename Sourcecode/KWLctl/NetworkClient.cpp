@@ -18,6 +18,9 @@
  * This copyright notice MUST APPEAR in all copies of the software!
  */
 
+// https://github.com/marvinroger/async-mqtt-client/blob/master/examples/FullyFeatured-ESP8266/FullyFeatured-ESP8266.ino
+// https://github.com/esp8266/Arduino/blob/master/libraries/esp8266/examples/NTP-TZ-DST/NTP-TZ-DST.ino
+
 #include "NetworkClient.h"
 #include "MessageHandler.h"
 #include "KWLConfig.h"
@@ -27,7 +30,13 @@
 
 #define WIFI_SUPPORT
 
-#include "WifiData.h"
+#ifdef WIFI_SUPPORT
+  #include "UserConfig.WifiData.h"
+  /*
+  #define WIFI_AP "MyAP"
+  #define WIFI_PASSWORD "MyPassword"
+  */
+#endif
 
 // To prevent crashes while debugging in lab settings without Ethernet module
 //#define NO_ETHERNET
@@ -288,20 +297,23 @@ void NetworkClient::loop()
 #ifdef WIFI_SUPPORT
   //auto new_wifi_status = WiFi.status();
   auto current_time = micros();
+
+  wifi_status_ = WiFi.status();
   if (lan_ok_) {
-    if (WiFi.localIP()[0] == 0) {
+    if (wifi_status_ != WL_CONNECTED) {
       Serial.println(F("WLAN disconnected, attempting to connect"));
       lan_ok_ = false;
-      wifi_status_ = WiFi.status();
       timer_task_.cancel();
+
       initEthernet(Serial); // nothing more to do now
+
       last_lan_reconnect_attempt_time_ = current_time;
       return;
     }
     // have Ethernet, do other checks
   } else {
     // no Ethernet previously, check if now connected
-    if (WiFi.localIP()[0] == 0) {
+    if (wifi_status_ == WL_CONNECTED) {
       Serial.print(F("WLAN connected, IP: "));
       Serial.println(WiFi.localIP());
       lan_ok_ = true;
@@ -354,7 +366,7 @@ void NetworkClient::loop()
       Serial.println(F("MQTT disconnected, attempting to connect"));
       timer_task_.cancel();
       mqtt_ok_ = mqttConnect();
-      if (!mqtt_ok_)
+      if (!mqtt_ok_) 
         return; // couldn't connect now, cannot continue
     }
     // have MQTT receive messages
